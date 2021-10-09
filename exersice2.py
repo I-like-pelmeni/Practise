@@ -2,8 +2,8 @@ class TriangleChecker:
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
-            self.c = c
-            
+        self.c = c
+
 
     def is_triangle(self):
         if self.a + self.b>self.c and self.c+self.b>self.a and self.a+self.c>self.b:
