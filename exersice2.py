@@ -1,17 +1,16 @@
 class TriangleChecker:
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
+    def __init__(self, sides):
+        self.sides = sides
 
 
     def is_triangle(self):
-        if self.a + self.b>self.c and self.c+self.b>self.a and self.a+self.c>self.b:
-            print('Ура, можно построить треугольник!')
-        elif self.a < 0 or self.b < 0  or self.c < 0:
-            print('С отрицательными числами не выйдет')
-        else:
-            print('Жаль, но из этого не сделать треугольник.')
+        if all(isinstance(side, (int,float)) for side in self.sides):
+            if all(side > 0 for side in self.sides):
+                sorted_sides = sorted(self.sides)
+                if sorted_sides[0] + sorted_sides[1] > sorted_sides[2]:
+                    return 'Ура, можно построить треугольник!'
+                return 'Жаль, но из этого не сделать треугольник.'
+            return 'С отрицательными числами не выйдет'
+        return 'Нужно вводить только числа!'
 
-t = TriangleChecker(int(input()), int(input()), int(input()))
-t.is_triangle()
+
